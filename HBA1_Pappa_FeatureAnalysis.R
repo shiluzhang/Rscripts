@@ -1,12 +1,6 @@
 ## 07-29-2019:
 ## Step1: generate feature for pappa genes:
-options(scipen = 999)
-library(data.table)
-chr=9
-gene="Pappa"  # "HBA1"
-cell="Hmec"
-genFileandBarplot(cell="K562",chr=16,gene="HBA1")
-genFileandBarplot(cell="Hmec",chr=9,gene="Pappa")
+
 genFileandBarplot=function(cell,chr,gene)
 {
   ## pairfeatures
@@ -68,7 +62,7 @@ genFileandBarplot=function(cell,chr,gene)
   dev.off()
 }
 
-genDegreeNodeFile(cell="Hmec",chr=9,gene="Pappa")
+
 genDegreeNodeFile=function(cell,chr,gene)
 {
   path=paste0("/royfs_write/szhang/e_p_project/hic_for_ripple/Result/Prediction5kb/SQRTVC/Window_Merge_DepNormPerCell_Update/",cell,"/upto1000kb/chr",chr,"/FeatureAnalysisGene/",gene,"_signf_f2")
@@ -93,3 +87,12 @@ genDegreeNodeFile=function(cell,chr,gene)
   print(nrow(d1)-length(id))
   write.table(d1,file=paste0(cell,"_",gene,"_degree1.txt"),col.names = T,row.names = F,quote = F,sep="\t")
 }
+
+options(scipen = 999)
+library(data.table)
+chr=9
+gene="Pappa"  # "HBA1"
+cell="Hmec"
+genFileandBarplot(cell="K562",chr=16,gene="HBA1")
+genFileandBarplot(cell="Hmec",chr=9,gene="Pappa")
+genDegreeNodeFile(cell="Hmec",chr=9,gene="Pappa")
